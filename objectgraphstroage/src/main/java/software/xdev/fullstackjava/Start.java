@@ -1,13 +1,12 @@
 package software.xdev.fullstackjava;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+
+import one.microstream.storage.embedded.types.EmbeddedStorage;
+import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 
 public class Start {
 
@@ -15,22 +14,16 @@ public class Start {
 
 		Map<LocalDateTime, Pizza> orders = new HashMap<>();
 
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("my.database"))) {
-			orders = (Map<LocalDateTime, Pizza>) ois.readObject();
-		} catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		// Initialize a storage manager ("the database") with purely defaults.
+		final EmbeddedStorageManager storage = EmbeddedStorage.start(orders, Path.of("my.database"));
 
 		orders.put(LocalDateTime.now(), new Pizza("Hawaii", 2080));
 
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("my.database"))) {
-			oos.writeObject(orders);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+		storage.storeRoot();
+
 		orders.forEach((time, pizza) -> System.out.println(time + " " + pizza));
-		
+
+		storage.shutdown();
 
 	}
 

@@ -1,10 +1,6 @@
 package software.xdev.fullstackjava;
 
-import java.io.Serializable;
-
-public class Pizza implements Serializable {
-
-	private static final long serialVersionUID = 5379499148301172146L;
+public class Pizza {
 
 	// no "database id"
 	private String name;

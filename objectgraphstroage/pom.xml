@@ -16,6 +16,17 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
-
+	<dependencies>
+		<dependency>
+			<groupId>one.microstream</groupId>
+			<artifactId>microstream-storage-embedded</artifactId>
+			<version>07.00.00-MS-GA</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-nop</artifactId>
+			<version>1.7.32</version>
+		</dependency>
+	</dependencies>
 
 </project>
