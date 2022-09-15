@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<?xdevuiml version="1.0"?>
+<?template NONE?>
+<?import com.vaadin.flow.component.button.Button?>
+<?import com.vaadin.flow.component.formlayout.FormLayout?>
+<?import com.vaadin.flow.component.formlayout.FormLayout.FormItem?>
+<?import com.vaadin.flow.component.html.Label?>
+<?import com.vaadin.flow.component.html.Paragraph?>
+<?import com.vaadin.flow.component.orderedlayout.VerticalLayout?>
+<?import com.vaadin.flow.component.textfield.NumberField?>
+<?import com.vaadin.flow.component.textfield.TextField?>
+<?import com.vaadin.flow.data.binder.BeanValidationBinder?>
+<?import java.lang.String?>
+<?import software.xdev.fullstackjava.pizzashop.domain.Pizza?>
+<?import software.xdev.fullstackjava.pizzashop.ui.MainLayout?>
+<VerticalLayout xmlns:x="http://xml.xdev-software.com/xdevuiml" x:routeLayout="MainLayout" x:name="PicturesView" x:route="pictures">
+    <x:constraints zpos="0" width="100%" height="100%" />
+    <Paragraph x:name="paragraph" text="This lists all the pictures that we want to share with the user. Maybe some nice vacation pictures :)">
+        <x:constraints width="100%" height="-1px" flex-grow="0.0" />
+    </Paragraph>
+    <FormLayout x:name="form">
+        <x:responsiveSteps>
+            <entry minWidth="0px" columns="1" labelsPosition="TOP" />
+            <entry minWidth="500px" columns="2" labelsPosition="TOP" />
+            <entry minWidth="1000px" columns="3" labelsPosition="ASIDE" />
+        </x:responsiveSteps>
+        <x:constraints width="0px" height="0px" flex-grow="0.0" />
+        <BeanValidationBinder x:name="binder">
+            <x:typeArguments>
+                <typeArgument type="Pizza" />
+            </x:typeArguments>
+            <x:bindings>
+                <binding field="txtMenuId" property="menuId" required="false" nullRepresentation="" readOnly="false">
+                    <validator type="Bean" />
+                </binding>
+                <binding field="txtName" property="name" required="false" nullRepresentation="" readOnly="false">
+                    <validator type="Bean" />
+                </binding>
+                <binding field="nrCalories" property="calories" required="false" readOnly="false">
+                    <validator type="Bean" />
+                    <converter TYPE="DoubleToInteger" />
+                </binding>
+                <binding field="txtDesciption" property="desciption" required="false" nullRepresentation="" readOnly="false">
+                    <validator type="Bean" />
+                </binding>
+            </x:bindings>
+        </BeanValidationBinder>
+        <FormItem x:name="formItem">
+            <x:constraints width="0px" height="0px" />
+            <Label x:name="lblMenuId" text="menuId">
+                <x:constraints width="0px" label="true" height="0px" />
+            </Label>
+            <TextField tabIndex="1" x:name="txtMenuId">
+                <x:constraints width="100%" height="0px" />
+                <x:typeArguments>
+                    <typeArgument type="String" />
+                </x:typeArguments>
+            </TextField>
+        </FormItem>
+        <FormItem x:name="formItem2">
+            <x:constraints width="0px" height="0px" />
+            <Label x:name="lblName" text="name">
+                <x:constraints width="0px" label="true" height="0px" />
+            </Label>
+            <TextField tabIndex="2" x:name="txtName">
+                <x:constraints width="100%" height="0px" />
+                <x:typeArguments>
+                    <typeArgument type="String" />
+                </x:typeArguments>
+            </TextField>
+        </FormItem>
+        <FormItem x:name="formItem3">
+            <x:constraints width="0px" height="0px" />
+            <Label x:name="lblCalories" text="calories">
+                <x:constraints width="0px" label="true" height="0px" />
+            </Label>
+            <NumberField tabIndex="3" x:name="nrCalories">
+                <x:constraints width="100%" height="0px" />
+                <x:typeArguments>
+                    <typeArgument type="int" />
+                </x:typeArguments>
+            </NumberField>
+        </FormItem>
+        <FormItem x:name="formItem4">
+            <x:constraints width="0px" height="0px" />
+            <Label x:name="lblDesciption" text="desciption">
+                <x:constraints width="0px" label="true" height="0px" />
+            </Label>
+            <TextField tabIndex="4" x:name="txtDesciption">
+                <x:constraints width="100%" height="0px" />
+                <x:typeArguments>
+                    <typeArgument type="String" />
+                </x:typeArguments>
+            </TextField>
+        </FormItem>
+    </FormLayout>
+    <Button x:name="button" text="Save">
+        <x:constraints width="0px" height="0px" flex-grow="0.0" />
+        <x:event>click.onComponentEvent</x:event>
+    </Button>
+</VerticalLayout>
