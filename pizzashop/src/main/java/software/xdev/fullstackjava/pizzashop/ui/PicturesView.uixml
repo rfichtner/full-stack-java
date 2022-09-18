@@ -10,7 +10,7 @@
 <?import com.vaadin.flow.component.orderedlayout.VerticalLayout?>
 <?import com.vaadin.flow.component.textfield.NumberField?>
 <?import com.vaadin.flow.component.textfield.TextField?>
-<?import com.vaadin.flow.data.binder.BeanValidationBinder?>
+<?import com.vaadin.flow.data.binder.Binder?>
 <?import java.lang.String?>
 <?import software.xdev.fullstackjava.pizzashop.domain.Pizza?>
 <?import software.xdev.fullstackjava.pizzashop.ui.MainLayout?>
@@ -26,17 +26,11 @@
             <entry minWidth="1000px" columns="3" labelsPosition="ASIDE" />
         </x:responsiveSteps>
         <x:constraints width="0px" height="0px" flex-grow="0.0" />
-        <BeanValidationBinder x:name="binder">
+        <Binder x:name="binder">
             <x:typeArguments>
                 <typeArgument type="Pizza" />
             </x:typeArguments>
             <x:bindings>
-                <binding field="txtMenuId" property="menuId" required="false" nullRepresentation="" readOnly="false">
-                    <validator type="Bean" />
-                </binding>
-                <binding field="txtName" property="name" required="false" nullRepresentation="" readOnly="false">
-                    <validator type="Bean" />
-                </binding>
                 <binding field="nrCalories" property="calories" required="false" readOnly="false">
                     <validator type="Bean" />
                     <converter TYPE="DoubleToInteger" />
@@ -44,26 +38,32 @@
                 <binding field="txtDesciption" property="desciption" required="false" nullRepresentation="" readOnly="false">
                     <validator type="Bean" />
                 </binding>
+                <binding field="txtMenuId" property="menuId" required="false" nullRepresentation="" readOnly="false">
+                    <validator type="Bean" />
+                </binding>
+                <binding field="txtName" property="name" required="false" nullRepresentation="" readOnly="false">
+                    <validator type="Bean" />
+                </binding>
             </x:bindings>
-        </BeanValidationBinder>
+        </Binder>
         <FormItem x:name="formItem">
             <x:constraints width="0px" height="0px" />
-            <Label x:name="lblMenuId" text="menuId">
+            <Label x:name="lblCalories" text="calories">
                 <x:constraints width="0px" label="true" height="0px" />
             </Label>
-            <TextField tabIndex="1" x:name="txtMenuId">
+            <NumberField tabIndex="1" x:name="nrCalories">
                 <x:constraints width="100%" height="0px" />
                 <x:typeArguments>
-                    <typeArgument type="String" />
+                    <typeArgument type="int" />
                 </x:typeArguments>
-            </TextField>
+            </NumberField>
         </FormItem>
         <FormItem x:name="formItem2">
             <x:constraints width="0px" height="0px" />
-            <Label x:name="lblName" text="name">
+            <Label x:name="lblDesciption" text="desciption">
                 <x:constraints width="0px" label="true" height="0px" />
             </Label>
-            <TextField tabIndex="2" x:name="txtName">
+            <TextField tabIndex="2" x:name="txtDesciption">
                 <x:constraints width="100%" height="0px" />
                 <x:typeArguments>
                     <typeArgument type="String" />
@@ -72,22 +72,22 @@
         </FormItem>
         <FormItem x:name="formItem3">
             <x:constraints width="0px" height="0px" />
-            <Label x:name="lblCalories" text="calories">
+            <Label x:name="lblMenuId" text="menuId">
                 <x:constraints width="0px" label="true" height="0px" />
             </Label>
-            <NumberField tabIndex="3" x:name="nrCalories">
+            <TextField tabIndex="3" x:name="txtMenuId">
                 <x:constraints width="100%" height="0px" />
                 <x:typeArguments>
-                    <typeArgument type="int" />
+                    <typeArgument type="String" />
                 </x:typeArguments>
-            </NumberField>
+            </TextField>
         </FormItem>
         <FormItem x:name="formItem4">
             <x:constraints width="0px" height="0px" />
-            <Label x:name="lblDesciption" text="desciption">
+            <Label x:name="lblName" text="name">
                 <x:constraints width="0px" label="true" height="0px" />
             </Label>
-            <TextField tabIndex="4" x:name="txtDesciption">
+            <TextField tabIndex="4" x:name="txtName">
                 <x:constraints width="100%" height="0px" />
                 <x:typeArguments>
                     <typeArgument type="String" />

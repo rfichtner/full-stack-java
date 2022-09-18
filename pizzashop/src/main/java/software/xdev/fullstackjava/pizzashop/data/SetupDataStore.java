@@ -12,14 +12,16 @@ import software.xdev.fullstackjava.pizzashop.domain.Pizza;
 
 public class SetupDataStore
 {
-
+	
 	public static void main(final String[] args)
 	{
-
+		
 		final List<Pizza> pizzas = new ArrayList<>();
-
+		
 		// Initialize a storage manager ("the database") with purely defaults.
 		final EmbeddedStorageManager storage = EmbeddedStorage.start(pizzas, Path.of("my.database"));
+		
+		pizzas.stream().forEach(p -> System.out.println(p));
 
 		if(pizzas.isEmpty())
 		{
@@ -31,10 +33,11 @@ public class SetupDataStore
 			pizzas.add(new Pizza("P 6", "Ham and Cheese", 2080, "Ham with more Cheese"));
 			pizzas.add(new Pizza("P 7", "Nacho", 2080, "Mexican Style"));
 			storage.storeRoot();
+			pizzas.stream().forEach(p -> System.out.println(p));
 		}
-
+		
 		storage.shutdown();
-
+		
 	}
-
+	
 }
