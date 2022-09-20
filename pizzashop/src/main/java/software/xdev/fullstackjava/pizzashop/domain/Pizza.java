@@ -1,20 +1,17 @@
 
 package software.xdev.fullstackjava.pizzashop.domain;
 
-import javax.validation.constraints.NotEmpty;
-
-
 public class Pizza
 {
-	
+
 	// no "database id"
-	
+
 	private final String menuId;
 	private final String name;
 	private final int    calories;
 	private final String desciption;
-	
-	public Pizza(final @NotEmpty String menuId, final String name, final int calories, final String desciption)
+
+	public Pizza(final String menuId, final String name, final int calories, final String desciption)
 	{
 		super();
 		this.menuId     = menuId;
@@ -22,27 +19,27 @@ public class Pizza
 		this.calories   = calories;
 		this.desciption = desciption;
 	}
-	
+
 	public String getName()
 	{
 		return this.name;
 	}
-	
+
 	public int getCalories()
 	{
 		return this.calories;
 	}
-	
+
 	public String getMenuId()
 	{
 		return this.menuId;
 	}
-	
+
 	public String getDesciption()
 	{
 		return this.desciption;
 	}
-	
+
 	@Override
 	public String toString()
 	{
@@ -50,5 +47,5 @@ public class Pizza
 			+ this.desciption
 			+ "]";
 	}
-	
+
 }

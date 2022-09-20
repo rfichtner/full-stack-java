@@ -29,13 +29,13 @@ public class PicturesView extends VerticalLayout implements HasTitle
 		super();
 		this.initUI();
 	}
-
+	
 	@Override
 	public String getTitle()
 	{
 		return "Pictures";
 	}
-
+	
 	/**
 	 * Event handler delegate method for the {@link Button} {@link #button}.
 	 *
@@ -44,10 +44,9 @@ public class PicturesView extends VerticalLayout implements HasTitle
 	 */
 	private void button_onClick(final ClickEvent<Button> event)
 	{
-
-		DataStore.Instance.pizzas.add(this.binder.getBean());
-		// binder clear
-		DataStore.Instance.storage.storeRoot();
+		final Pizza p = new Pizza(this.txtMenuId.getValue(), this.txtName.getValue(),
+			this.nrCalories.getValue().intValue(), this.txtDesciption.getValue());
+		DataStore.Instance.pizzas.add(p);
 
 	}
 	
@@ -58,17 +57,17 @@ public class PicturesView extends VerticalLayout implements HasTitle
 		this.paragraph     = new Paragraph();
 		this.form          = new FormLayout();
 		this.formItem      = new FormItem();
-		this.lblCalories   = new Label();
-		this.nrCalories    = new NumberField();
-		this.formItem2     = new FormItem();
-		this.lblDesciption = new Label();
-		this.txtDesciption = new TextField();
-		this.formItem3     = new FormItem();
 		this.lblMenuId     = new Label();
 		this.txtMenuId     = new TextField();
-		this.formItem4     = new FormItem();
+		this.formItem2     = new FormItem();
 		this.lblName       = new Label();
 		this.txtName       = new TextField();
+		this.formItem3     = new FormItem();
+		this.lblCalories   = new Label();
+		this.nrCalories    = new NumberField();
+		this.formItem4     = new FormItem();
+		this.lblDesciption = new Label();
+		this.txtDesciption = new TextField();
 		this.binder        = new Binder<>();
 		this.button        = new Button();
 
@@ -78,42 +77,42 @@ public class PicturesView extends VerticalLayout implements HasTitle
 			new FormLayout.ResponsiveStep("0px", 1, FormLayout.ResponsiveStep.LabelsPosition.TOP),
 			new FormLayout.ResponsiveStep("500px", 2, FormLayout.ResponsiveStep.LabelsPosition.TOP),
 			new FormLayout.ResponsiveStep("1000px", 3, FormLayout.ResponsiveStep.LabelsPosition.ASIDE));
-		this.lblCalories.setText("calories");
-		this.nrCalories.setTabIndex(1);
-		this.lblDesciption.setText("desciption");
-		this.txtDesciption.setTabIndex(2);
 		this.lblMenuId.setText("menuId");
-		this.txtMenuId.setTabIndex(3);
+		this.txtMenuId.setTabIndex(1);
 		this.lblName.setText("name");
-		this.txtName.setTabIndex(4);
+		this.txtName.setTabIndex(2);
+		this.lblCalories.setText("calories");
+		this.nrCalories.setTabIndex(3);
+		this.lblDesciption.setText("desciption");
+		this.txtDesciption.setTabIndex(4);
 		this.button.setText("Save");
 
+		this.binder.forField(this.txtMenuId).withNullRepresentation("").bind(Pizza::getMenuId, (v, x) -> {});
+		this.binder.forField(this.txtName).withNullRepresentation("").bind(Pizza::getName, (v, x) -> {});
 		this.binder.forField(this.nrCalories).withConverter(ConverterBuilder.DoubleToInteger().build())
 			.bind(Pizza::getCalories, (v, x) -> {});
 		this.binder.forField(this.txtDesciption).withNullRepresentation("").bind(Pizza::getDesciption, (v, x) -> {});
-		this.binder.forField(this.txtMenuId).withNullRepresentation("").bind(Pizza::getMenuId, (v, x) -> {});
-		this.binder.forField(this.txtName).withNullRepresentation("").bind(Pizza::getName, (v, x) -> {});
 
-		this.lblCalories.setSizeUndefined();
-		this.lblCalories.getElement().setAttribute("slot", "label");
-		this.nrCalories.setWidthFull();
-		this.nrCalories.setHeight(null);
-		this.formItem.add(this.lblCalories, this.nrCalories);
-		this.lblDesciption.setSizeUndefined();
-		this.lblDesciption.getElement().setAttribute("slot", "label");
-		this.txtDesciption.setWidthFull();
-		this.txtDesciption.setHeight(null);
-		this.formItem2.add(this.lblDesciption, this.txtDesciption);
 		this.lblMenuId.setSizeUndefined();
 		this.lblMenuId.getElement().setAttribute("slot", "label");
 		this.txtMenuId.setWidthFull();
 		this.txtMenuId.setHeight(null);
-		this.formItem3.add(this.lblMenuId, this.txtMenuId);
+		this.formItem.add(this.lblMenuId, this.txtMenuId);
 		this.lblName.setSizeUndefined();
 		this.lblName.getElement().setAttribute("slot", "label");
 		this.txtName.setWidthFull();
 		this.txtName.setHeight(null);
-		this.formItem4.add(this.lblName, this.txtName);
+		this.formItem2.add(this.lblName, this.txtName);
+		this.lblCalories.setSizeUndefined();
+		this.lblCalories.getElement().setAttribute("slot", "label");
+		this.nrCalories.setWidthFull();
+		this.nrCalories.setHeight(null);
+		this.formItem3.add(this.lblCalories, this.nrCalories);
+		this.lblDesciption.setSizeUndefined();
+		this.lblDesciption.getElement().setAttribute("slot", "label");
+		this.txtDesciption.setWidthFull();
+		this.txtDesciption.setHeight(null);
+		this.formItem4.add(this.lblDesciption, this.txtDesciption);
 		this.form.add(this.formItem, this.formItem2, this.formItem3, this.formItem4);
 		this.paragraph.setWidthFull();
 		this.paragraph.setHeight(null);
@@ -129,11 +128,11 @@ public class PicturesView extends VerticalLayout implements HasTitle
 	private FormLayout    form;
 	private Button        button;
 	private NumberField   nrCalories;
-	private Label         lblCalories, lblDesciption, lblMenuId, lblName;
+	private Label         lblMenuId, lblName, lblCalories, lblDesciption;
 	private Binder<Pizza> binder;
 	private Paragraph     paragraph;
-	private TextField     txtDesciption, txtMenuId, txtName;
+	private TextField     txtMenuId, txtName, txtDesciption;
 	private FormItem      formItem, formItem2, formItem3, formItem4;
 	// </generated-code>
-
+	
 }

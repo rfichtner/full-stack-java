@@ -1,10 +1,21 @@
 
 package software.xdev.fullstackjava.pizzashop.ui;
 
-import software.xdev.fullstackjava.pizzashop.HasTitle;
+import java.util.Arrays;
+import java.util.Collection;
+
+import com.rapidclipse.framework.server.resources.CaptionUtils;
+import com.rapidclipse.framework.server.ui.filter.FilterComponent;
+import com.rapidclipse.framework.server.ui.filter.GridFilterSubjectFactory;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.data.provider.ListDataProvider;
 import com.vaadin.flow.router.Route;
+
+import software.xdev.fullstackjava.pizzashop.HasTitle;
+import software.xdev.fullstackjava.pizzashop.data.DataStore;
+import software.xdev.fullstackjava.pizzashop.domain.Pizza;
 
 
 @Route(value = "todos", layout = MainLayout.class)
@@ -14,6 +25,9 @@ public class TodosView extends VerticalLayout implements HasTitle
 	{
 		super();
 		this.initUI();
+		final PizzaDataProvider pdp = new PizzaDataProvider(DataStore.Instance.pizzas);
+		this.grid.setDataProvider(pdp);
+		this.filterComponent.connectWith(pdp);
 	}
 	
 	@Override
@@ -26,19 +40,51 @@ public class TodosView extends VerticalLayout implements HasTitle
 	// <generated-code name="initUI">
 	private void initUI()
 	{
-		this.paragraph = new Paragraph();
+		this.paragraph       = new Paragraph();
+		this.filterComponent = new FilterComponent();
+		this.grid            = new Grid<>(Pizza.class, false);
 		
 		this.paragraph.setText(
 			"Here we have a list of all the tasks the user still has to do. It could also contain a nice little checkbox that plays a satisfying sound whenever a task is ticked off.");
+		this.grid.addColumn(Pizza::getMenuId).setKey("menuId")
+			.setHeader(CaptionUtils.resolveCaption(Pizza.class, "menuId"))
+			.setResizable(true).setSortable(true);
+		this.grid.addColumn(Pizza::getName).setKey("name").setHeader(CaptionUtils.resolveCaption(Pizza.class, "name"))
+			.setResizable(true).setSortable(true);
+		this.grid.addColumn(Pizza::getCalories).setKey("calories")
+			.setHeader(CaptionUtils.resolveCaption(Pizza.class, "calories")).setResizable(true).setSortable(true);
+		this.grid.addColumn(Pizza::getDesciption).setKey("desciption")
+			.setHeader(CaptionUtils.resolveCaption(Pizza.class, "desciption")).setResizable(true).setSortable(true);
+		this.grid.setSelectionMode(Grid.SelectionMode.SINGLE);
+		
+		this.filterComponent.connectWith(this.grid.getDataProvider());
+		this.filterComponent.setFilterSubject(GridFilterSubjectFactory.CreateFilterSubject(this.grid,
+			Arrays.asList("menuId", "name", "desciption"), Arrays.asList("menuId", "name", "calories", "desciption")));
 		
 		this.paragraph.setWidthFull();
 		this.paragraph.setHeight(null);
-		this.add(this.paragraph);
+		this.filterComponent.setWidthFull();
+		this.filterComponent.setHeight(null);
+		this.grid.setSizeFull();
+		this.add(this.paragraph, this.filterComponent, this.grid);
+		this.setFlexGrow(1.0, this.grid);
 		this.setSizeFull();
 	} // </generated-code>
-	
+
 	// <generated-code name="variables">
-	private Paragraph paragraph;
+	private FilterComponent filterComponent;
+	private Grid<Pizza>     grid;
+	private Paragraph       paragraph;
 	// </generated-code>
-	
+
+	class PizzaDataProvider extends ListDataProvider<Pizza>
+	{
+
+		public PizzaDataProvider(final Collection<Pizza> items)
+		{
+			super(items);
+		}
+
+	}
+
 }

@@ -4,7 +4,6 @@ package software.xdev.fullstackjava.pizzashop.ui;
 import java.util.Arrays;
 import java.util.Collection;
 
-import com.rapidclipse.framework.server.data.DataAccessObject;
 import com.rapidclipse.framework.server.resources.CaptionUtils;
 import com.rapidclipse.framework.server.ui.filter.FilterComponent;
 import com.rapidclipse.framework.server.ui.filter.GridFilterSubjectFactory;
@@ -29,6 +28,7 @@ public class HomeView extends VerticalLayout implements HasTitle
 	public HomeView()
 	{
 		super();
+
 		this.initUI();
 		final PizzaDataProvider pdp = new PizzaDataProvider(DataStore.Instance.pizzas);
 		this.grid.setDataProvider(pdp);
@@ -99,7 +99,7 @@ public class HomeView extends VerticalLayout implements HasTitle
 	private Paragraph       paragraph;
 	// </generated-code>
 	
-	class PizzaDataProvider extends ListDataProvider<Pizza> implements DataAccessObject<Pizza>
+	class PizzaDataProvider extends ListDataProvider<Pizza>
 	{
 		
 		public PizzaDataProvider(final Collection<Pizza> items)
@@ -107,10 +107,5 @@ public class HomeView extends VerticalLayout implements HasTitle
 			super(items);
 		}
 		
-		public Collection<Pizza> allPizzas()
-		{
-			return this.getItems();
-		}
-
 	}
 }

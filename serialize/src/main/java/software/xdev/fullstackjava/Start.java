@@ -15,7 +15,7 @@ public class Start {
 
 		Map<LocalDateTime, Pizza> orders = new HashMap<>();
 
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("my.database"))) {
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("my.database1"))) {
 			orders = (Map<LocalDateTime, Pizza>) ois.readObject();
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -23,7 +23,7 @@ public class Start {
 
 		orders.put(LocalDateTime.now(), new Pizza("Hawaii", 2080));
 
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("my.database"))) {
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("my.database1"))) {
 			oos.writeObject(orders);
 		} catch (IOException e) {
 			e.printStackTrace();

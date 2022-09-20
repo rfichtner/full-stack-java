@@ -1222,7 +1222,7 @@ packages:
       babel-plugin-polyfill-corejs2: 0.3.3_@babel+core@7.19.1
       babel-plugin-polyfill-corejs3: 0.6.0_@babel+core@7.19.1
       babel-plugin-polyfill-regenerator: 0.4.1_@babel+core@7.19.1
-      core-js-compat: 3.25.1
+      core-js-compat: 3.25.2
       semver: 6.3.0
     dev: true
     engines:
@@ -2557,7 +2557,7 @@ packages:
     dependencies:
       '@babel/core': 7.19.1
       '@babel/helper-define-polyfill-provider': 0.3.3_@babel+core@7.19.1
-      core-js-compat: 3.25.1
+      core-js-compat: 3.25.2
     dev: true
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -3049,16 +3049,16 @@ packages:
       integrity: sha512-Z942RysHXmJrhqk88FmKBVq/v5tqmSkDz7p54G/MGyjMnCFFnC79XWNbg+Vta8W6Wb2qtSZTSxIGkJrRpCFEiA==
   /browserslist/3.2.8:
     dependencies:
-      caniuse-lite: 1.0.30001402
-      electron-to-chromium: 1.4.253
+      caniuse-lite: 1.0.30001406
+      electron-to-chromium: 1.4.254
     dev: true
     hasBin: true
     resolution:
       integrity: sha512-WHVocJYavUwVgVViC0ORikPHQquXwVh939TaelZ4WDqpWgTX/FsGhl/+P4qBUAGcRvtOgDgC+xftNWWp2RUTAQ==
   /browserslist/4.21.4:
     dependencies:
-      caniuse-lite: 1.0.30001402
-      electron-to-chromium: 1.4.253
+      caniuse-lite: 1.0.30001406
+      electron-to-chromium: 1.4.254
       node-releases: 2.0.6
       update-browserslist-db: 1.0.9_browserslist@4.21.4
     dev: true
@@ -3197,10 +3197,10 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
-  /caniuse-lite/1.0.30001402:
+  /caniuse-lite/1.0.30001406:
     dev: true
     resolution:
-      integrity: sha512-Mx4MlhXO5NwuvXGgVb+hg65HZ+bhUYsz8QtDGDo2QmaJS2GBX47Xfi2koL86lc8K+l+htXeTEB/Aeqvezoo6Ew==
+      integrity: sha512-bWTlaXUy/rq0BBtYShc/jArYfBPjEV95euvZ8JVtO43oQExEN/WquoqpufFjNu4kSpi5cy5kMbNvzztWDfv1Jg==
   /chalk/1.1.3:
     dependencies:
       ansi-styles: 2.2.1
@@ -3473,12 +3473,12 @@ packages:
       webpack: ^4.0.0 || ^5.0.0
     resolution:
       integrity: sha512-Uh7crJAco3AjBvgAy9Z75CjK8IG+gxaErro71THQ+vv/bl4HaQcpkexAY8KVW/T6D2W2IRr+couF/knIRkZMIQ==
-  /core-js-compat/3.25.1:
+  /core-js-compat/3.25.2:
     dependencies:
       browserslist: 4.21.4
     dev: true
     resolution:
-      integrity: sha512-pOHS7O0i8Qt4zlPW/eIFjwp+NrTPx+wTL0ctgI2fHn31sZOq89rDsmtc/A2vAX7r6shl+bmVI+678He46jgBlw==
+      integrity: sha512-TxfyECD4smdn3/CjWxczVtJqVLEEC2up7/82t7vC0AzNogr+4nQ8vyF7abxAuTXWvjTClSbvGhU0RgqA4ToQaQ==
   /core-js/2.6.12:
     deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
     dev: true
@@ -3852,10 +3852,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
-  /electron-to-chromium/1.4.253:
+  /electron-to-chromium/1.4.254:
     dev: true
     resolution:
-      integrity: sha512-1pezJ2E1UyBTGbA7fUlHdPSXQw1k+82VhTFLG5G0AUqLGvsZqFzleOblceqegZzxYX4kC7hGEEdzIQI9RZ1Cuw==
+      integrity: sha512-Sh/7YsHqQYkA6ZHuHMy24e6TE4eX6KZVsZb9E/DvU1nQRIrH4BflO/4k+83tfdYvDl+MObvlqHPRICzEdC9c6Q==
   /elliptic/6.5.4:
     dependencies:
       bn.js: 4.12.0
