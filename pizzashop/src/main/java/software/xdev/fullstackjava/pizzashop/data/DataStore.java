@@ -13,13 +13,13 @@ import software.xdev.fullstackjava.pizzashop.domain.Pizza;
 public class DataStore
 {
 	public static DataStore Instance = new DataStore();
-	
+
 	public List<Pizza> pizzas = new ArrayList<>();
-	
+
 	// Initialize a storage manager ("the database") with purely defaults.
 	public EmbeddedStorageManager storage =
-		EmbeddedStorage.start(this.pizzas, Path.of("my.database1"));
-	
+		EmbeddedStorage.start(this.pizzas, Path.of("my.database2"));
+
 	public DataStore()
 	{
 		if(this.pizzas.isEmpty())
@@ -33,7 +33,7 @@ public class DataStore
 			this.pizzas.add(new Pizza("P 7", "Nacho", 3100, "Mexican Style"));
 			this.storage.storeRoot();
 		}
-		
+
 	}
-	
+
 }

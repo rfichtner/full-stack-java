@@ -9,15 +9,15 @@ public class Pizza
 	private final String menuId;
 	private final String name;
 	private final int    calories;
-	private final String desciption;
+	private final String description;
 
-	public Pizza(final String menuId, final String name, final int calories, final String desciption)
+	public Pizza(final String menuId, final String name, final int calories, final String description)
 	{
 		super();
 		this.menuId     = menuId;
 		this.name       = name;
 		this.calories   = calories;
-		this.desciption = desciption;
+		this.description = description;
 	}
 
 	public String getName()
@@ -35,16 +35,16 @@ public class Pizza
 		return this.menuId;
 	}
 
-	public String getDesciption()
+	public String getdescription()
 	{
-		return this.desciption;
+		return this.description;
 	}
 
 	@Override
 	public String toString()
 	{
-		return "Pizza [menuId=" + this.menuId + ", name=" + this.name + ", calories=" + this.calories + ", desciption="
-			+ this.desciption
+		return "Pizza [menuId=" + this.menuId + ", name=" + this.name + ", calories=" + this.calories + ", description="
+			+ this.description
 			+ "]";
 	}
 
